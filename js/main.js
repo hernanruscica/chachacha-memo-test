@@ -3,7 +3,8 @@
 const cardsQuantity = 20, maxLifes = 10, timeShowing = 8000, timeIntro = 3000, defaultQuery = 'cats';
 let lifes, score, query;
 const imgBack = './imgs/tile.jpg';
-let imagesArr;
+const imagesArr = ['./imgs/carta01.jpg', './imgs/carta02.jpg', './imgs/carta03.jpg', './imgs/carta04.jpg', './imgs/carta05.jpg',
+                   './imgs/carta06.jpg', './imgs/carta07.jpg', './imgs/carta08.jpg', './imgs/carta09.jpg', './imgs/carta10.jpg'];
 /*******************************SETUP OF THE GAME**************************************************************/
 
 
@@ -19,20 +20,29 @@ const $timer = $d.querySelector('.timer');
 
 const $messagesModal = $d.querySelector('.modal');
 const welcomeMessages = [
-                        'Bienvenido al juego mas pulenta, el que juega el ninio japi',
-                        'Bienvenido, estas en una comisaria y vamos a jugar a este memotest'
+                        'Bienvenido/a al juego más PULENTA, el que juega el niño JAPI!',
+                        'Bienvenido/a, estas en una COMISARÍA y vamos a jugar a este MEMOTEST',
+                        'Hooola mis Palometitas escarchadas...',
+                        'Hola Amigos!',
+                        'Querido jugador, como estáis, como os sentéis hoy?'
                         ];
 const winnerMessages = [
-                        'Completaste el tablero. Te ganaste un SET DE CHORRIZOS!<br>',
-                        'Aleluya, encontraste todos los pares. Te ganaste una POSTAL DE GAROMPA! La ciudad natal de PEPERINO.<br>',
-                        'Conchituma, conchituma, te ganaste un CURSO DE CONTROL MENTAL en Gambeta Institute.<br>',
-                        'tus puntos = cantidad de cartas dividido 2, es decir que ganaste  por la ley de la palanca de galimberti!<br>'
+                        'Te ganaste un SET DE CHORRIZOS para usar con tu WORCESTERSHIRE!<br>',
+                        'Alelú, Alelú...Te ganaste una POSTAL DE GAROMPA, la ciudad natal de PEPERINO.<br>',
+                        'Felicitaciones, te ganaste un CURSO DE CONTROL MENTAL en Gambeta Institute.<br>',
+                        'tus puntos = cantidad de cartas dividido 2, es decir que ganaste  por la ley de la palanca de Galimberti!<br>',
+                        'Qué suerte, ganaste el PELUKINO, minita, minita...<br>',
+                        'Estas a la VanGard de la moda Gamer, y te ganaste UN CORTE en Pili Peinados !<br>'
                         ];
 const losserMessages = [
-                        'Se te acabaron las vidas.<br>',
-                        'Perdiste y te tenes que ir del FUTBOL como FATI.<br>'
+                        'Se te acabaron las vidas e hiciste llorar al COMI ...<br>',
+                        'Perdiste y te tenés que ir del FÚTBOL como FATI.<br>',
+                        'Qué mala suerte, perdiste pero por suerte tenes GAROMBOL FORTE! y este juego te chupa...<br>',
+                        'CONCHITUMÁ CONCHITUMÁ!! Perdiste...<br>',
+                        'Perdiste y dejaste a tu familia ITALIANA sin AJO !<br>',
+                        'Perdiste... FUERA DEL MUNDO DE LA TÉCNICA<br>'
                         ];
-const tryAgainMessage = 'Podes probar de nuevo, dandole al boton de reintentar que esta arriba!';
+const tryAgainMessage = 'Podés probar de nuevo, dándole al botón de "reintentar" que esta arriba!';
 
 /*******************************HTML ELEMENTS**************************************************************/
 
@@ -87,14 +97,14 @@ function resetGame(){
     /*reset this globals variables */
     lifes = maxLifes, score = 0, query = defaultQuery;
     /*Once the async function returns the array of images*/
-    fillWithImgs(query, cardsQuantity/2, 0, cardsQuantity*2).then((images) => {
+    
         
-        imagesArr = images; 
+        
         /*console.log(imagesArr);*/              
         fillGameBoard($gameBoard, cardsQuantity, imagesArr, imgBack);
         $cards = $d.getElementsByClassName('card');
         gamePlay();
-    }); 
+    
 }
 
 function gamePlay(){
@@ -266,9 +276,9 @@ function rotateCard($gBoard, cardId, cardIdPair){
 
 function showStats(){
     $h3Lifes.innerHTML = '';   
-    $h3Lifes.innerHTML = `Lifes: ${lifes}`;
+    $h3Lifes.innerHTML = `Vidas: ${lifes}`;
     $h3Score.innerHTML = '';
-    $h3Score.innerHTML = `Score: ${score}`;                     
+    $h3Score.innerHTML = `Puntos: ${score}`;                     
 }
 
 ///////////////////* HASTA ACA REFACTORIZADO *////////////////////////////
