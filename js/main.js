@@ -152,7 +152,9 @@ function gamePlay(){
             currentCardId = e.target.parentElement.id;
             lastCardIdPair = (currentCardIdPair !== '') ? currentCardIdPair : e.target.parentElement.dataset.idpair;
             currentCardIdPair = e.target.parentElement.dataset.idpair;
-            
+            /*remove the clickable class */
+            $d.getElementById(currentCardId).classList.remove('clickeable');
+             
             console.clear();      
 
             if (clicksCounter%2 === 0){
@@ -160,11 +162,10 @@ function gamePlay(){
                 /*There is coincidence in one turn */
                 if (currentCardId !== lastCardId && currentCardIdPair === lastCardIdPair){                                        
                     if (score < cardsQuantity/2){
-                        console.log('sumaste 1 punto!');                       
-                        /*remove the clickable class */      
-                        $d.getElementById(currentCardId).classList.remove('clickeable');                  
-                        $d.getElementById(lastCardId).classList.remove('clickeable');   
+                        console.log('sumaste 1 punto!');   
+                        $d.getElementById(lastCardId).classList.remove('clickeable');  
                         $d.getElementById('protection').classList.add('protectFromClicksGreen'); 
+                        
                         setTimeout(() => {$d.getElementById('protection').classList.remove('protectFromClicksGreen')}, 500 );
                         score++;
                         showStats(); 
@@ -182,6 +183,9 @@ function gamePlay(){
                     if (lifes > 0){
                         console.log('perdiste 1 vida!');
                         $d.getElementById('protection').classList.add('protectFromClicks');   
+                        /*add the clickable class */
+                        $d.getElementById(currentCardId).classList.add('clickeable');
+                        $d.getElementById(lastCardId).classList.add('clickeable'); 
                         lifes = lifes - 1;                                            
                         setTimeout(() => {
                             rotateCard($gameBoard, currentCardId, currentCardIdPair);
